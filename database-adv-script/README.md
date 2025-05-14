@@ -69,6 +69,23 @@ This directory contains SQL queries that demonstrate the use of **correlated** a
 
 These queries can be run in any PostgreSQL-compatible SQL environment after the Airbnb schema has been created.
 
+
+
+# SQL Aggregation and Window Functions
+
+## Objective
+This task demonstrates the use of SQL aggregation functions and window functions to perform advanced data analysis on the Airbnb Clone database.
+
+---
+
+## 🧮 Queries Included
+
+### 1. Total Bookings per User
+
+This query calculates the total number of bookings each user has made. It uses the `COUNT()` function with `GROUP BY` and orders the result in descending order of total bookings.
+
 ```sql
--- Example execution
-\i subqueries.sql
+SELECT user_id, COUNT(*) AS total_bookings
+FROM bookings
+GROUP BY user_id
+ORDER BY total_bookings DESC;
