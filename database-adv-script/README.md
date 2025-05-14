@@ -34,3 +34,41 @@ You can run the queries using any PostgreSQL-compatible database interface or SQ
 ```sql
 -- Example usage
 \i joins_queries.sql
+
+
+
+
+
+# SQL Subqueries – Airbnb Clone
+
+## 📌 Overview
+
+This directory contains SQL queries that demonstrate the use of **correlated** and **non-correlated subqueries** within the Airbnb Clone backend database. These queries are designed to extract advanced insights from the data using nested SELECT statements.
+
+## 🧠 Objectives
+
+- Use non-correlated subqueries to filter data based on aggregated conditions.
+- Apply correlated subqueries to evaluate row-specific conditions.
+- Practice writing efficient and readable SQL for complex backend logic.
+
+## 📂 File: `subqueries.sql`
+
+### ✅ Contents
+
+1. **Non-Correlated Subquery – High-Rated Properties**
+   - Retrieves all properties with an average review rating greater than 4.0.
+   - Uses a `HAVING AVG(rating) > 4.0` clause in a nested query.
+   - Sorted by property ID.
+
+2. **Correlated Subquery – Frequent Bookers**
+   - Retrieves users who have made more than 3 bookings.
+   - Correlates each user with a subquery that counts their bookings.
+   - Sorted by user ID.
+
+## ⚙️ Usage
+
+These queries can be run in any PostgreSQL-compatible SQL environment after the Airbnb schema has been created.
+
+```sql
+-- Example execution
+\i subqueries.sql
