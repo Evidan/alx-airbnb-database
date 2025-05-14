@@ -10,7 +10,8 @@ SELECT
     users.last_name,
     users.email
 FROM bookings
-INNER JOIN users ON bookings.user_id = users.user_id;
+INNER JOIN users ON bookings.user_id = users.user_id
+ORDER BY bookings.start_date DESC;
 
 -- 2. LEFT JOIN: Properties and Reviews
 SELECT 
@@ -20,7 +21,8 @@ SELECT
     reviews.rating,
     reviews.comment
 FROM properties
-LEFT JOIN reviews ON properties.property_id = reviews.property_id;
+LEFT JOIN reviews ON properties.property_id = reviews.property_id
+ORDER BY properties.property_id, reviews.rating DESC;
 
 -- 3. FULL OUTER JOIN: Users and Bookings
 SELECT 
@@ -31,4 +33,5 @@ SELECT
     bookings.start_date,
     bookings.total_price
 FROM users
-FULL OUTER JOIN bookings ON users.user_id = bookings.user_id;
+FULL OUTER JOIN bookings ON users.user_id = bookings.user_id
+ORDER BY users.user_id, bookings.start_date;
