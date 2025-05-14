@@ -1,5 +1,5 @@
--- Initial Query: Retrieves bookings with user, property, and payment details
-EXPLAIN ANALYZE
+
+-- Initial complex query with WHERE and AND clauses
 SELECT 
     b.booking_id,
     b.start_date,
@@ -16,14 +16,11 @@ SELECT
 FROM bookings b
 JOIN users u ON b.user_id = u.user_id
 JOIN properties p ON b.property_id = p.property_id
-JOIN payments pay ON b.booking_id = pay.booking_id;
+JOIN payments pay ON b.booking_id = pay.booking_id
+WHERE b.status = 'confirmed'
+AND b.start_date >= CURRENT_DATE - INTERVAL '30 days';
 
--- Refactored Query: Optimized to reduce execution time
--- Improvements:
--- 1. Only selecting necessary fields
--- 2. Assuming relevant indexes exist (e.g., user_id, property_id, booking_id)
-
-EXPLAIN ANALYZE
+-- Refactored and optimized query
 SELECT 
     b.booking_id,
     b.start_date,
@@ -36,4 +33,6 @@ SELECT
 FROM bookings b
 JOIN users u ON b.user_id = u.user_id
 JOIN properties p ON b.property_id = p.property_id
-LEFT JOIN payments pay ON b.booking_id = pay.booking_id;
+LEFT JOIN payments pay ON b.booking_id = pay.booking_id
+WHERE b.status = 'confirmed'
+AND b.start_date >= CURRENT_DATE - INTERVAL '30 days';
